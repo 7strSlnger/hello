@@ -12,15 +12,19 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background: linear-gradient(135deg, #00ff00 0%, #000000 100%);
+            background-image: url('metallica.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: #000;
         }
         
         .container {
             text-align: center;
-            background: white;
+            background: rgba(0, 0, 0, 0.85);
             padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 255, 0, 0.3);
         }
         
         h1 {
@@ -39,19 +43,10 @@
             font-weight: bold;
             margin-top: 10px;
         }
-        
-        .band-image {
-            width: 250px;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0, 255, 0, 0.3);
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="metallica.svg" alt="Metallica band" class="band-image">
         <h1>Hello World</h1>
         <p>Scott Slaten</p>
         <p class="company">Metalhead | ServerLogic</p>
