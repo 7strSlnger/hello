@@ -3,53 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World - Scott Slaten</title>
+    <title>GenX Besties - YouTube Channel</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #FFFFFF 50%, #8B4513 100%);
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 1rem 2rem;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-image: url('metallica.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-color: #000;
+            gap: 3rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        
-        .container {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.85);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0, 255, 0, 0.3);
-        }
-        
-        h1 {
-            color: #333;
-            margin: 0 0 10px 0;
-        }
-        
-        p {
-            color: #666;
-            margin: 0;
-            font-size: 18px;
-        }
-        
-        .company {
-            color: #00ff00;
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
             font-weight: bold;
-            margin-top: 10px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #D4AF37;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: #000;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 .step {
+            display: block;
+            margin-left: 3rem;
+            color: #8B4513;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #8B4513;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #A0522D;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .feature-card h3 {
+            color: #8B4513;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            margin-top: 3rem;
         }
     </style>
 </head>
 <body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about-us.html">About Us</a>
+        <a href="contact-us.html">Contact</a>
+    </nav>
+
     <div class="container">
-        <h1>Hello World</h1>
-        <p>Scott Slaten</p>
-        <p class="company">Metalhead | ServerLogic</p>
+        <div class="hero">
+            <h1>GenX<span class="step">Besties</span></h1>
+            <p>Celebrating the Generation X Spirit</p>
+            <a href="https://www.youtube.com" target="_blank" class="cta-button">Subscribe on YouTube</a>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>Entertainment</h3>
+                <p>Enjoy content that speaks to the GenX experience with humor, nostalgia, and fresh perspectives.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Community</h3>
+                <p>Connect with like-minded individuals who share your values, interests, and generation's unique outlook.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Authenticity</h3>
+                <p>Real conversations, real people, and real stories that matter to Generation X.</p>
+            </div>
+        </div>
     </div>
+
+    <footer>
+        <p>&copy; 2026 GenX Besties. All rights reserved.</p>
+    </footer>
 </body>
 </html>
