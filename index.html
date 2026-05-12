@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GenX Besties - YouTube Channel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&family=Oswald:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,153 +12,541 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-dark:    #2b3540;
+            --bg-darker:  #1a242e;
+            --red:        #e8394a;
+            --red-dark:   #c4293a;
+            --cyan:       #4dcfe8;
+            --cyan-dark:  #2ab3cc;
+            --white:      #f0f0f0;
+            --black:      #0d0d0d;
+            --card-bg:    #212d38;
+        }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            background: linear-gradient(135deg, #000000 0%, #FFFFFF 50%, #8B4513 100%);
-            min-height: 100vh;
-            font-family: 'Arial', sans-serif;
-            color: #333;
+            background-color: var(--bg-dark);
+            font-family: 'Open Sans', sans-serif;
+            color: var(--white);
+            overflow-x: hidden;
         }
 
+        /* ── NAV ── */
         nav {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            width: 100%;
+            z-index: 200;
+            background: rgba(26, 36, 46, 0.95);
+            backdrop-filter: blur(6px);
+            border-bottom: 2px solid var(--red);
+            padding: 0.9rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        nav a {
-            color: white;
+        .nav-logo {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            color: var(--white);
+        }
+        .nav-logo span { color: var(--cyan); }
+
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            color: var(--white);
             text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: bold;
-            transition: color 0.3s ease;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.2s;
         }
+        .nav-links a:hover { color: var(--cyan); }
 
-        nav a:hover {
-            color: #D4AF37;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
+        /* ── HERO ── */
         .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 4rem 2rem;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            margin: 2rem 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 20% 50%, rgba(77,207,232,0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 80% 50%, rgba(232,57,74,0.10) 0%, transparent 60%),
+                        var(--bg-dark);
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            color: #000;
-            margin-bottom: 1rem;
-            line-height: 1.2;
+        /* Splatter blobs */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(232,57,74,0.18) 0%, transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(77,207,232,0.18) 0%, transparent 30%),
+                radial-gradient(circle at 75% 15%, rgba(232,57,74,0.12) 0%, transparent 20%),
+                radial-gradient(circle at 25% 85%, rgba(77,207,232,0.12) 0%, transparent 20%);
+            pointer-events: none;
         }
 
-        .hero h1 .step {
-            display: block;
-            margin-left: 3rem;
-            color: #8B4513;
+        .hero-logo {
+            width: min(440px, 90vw);
+            border-radius: 12px;
+            box-shadow: 0 0 60px rgba(77,207,232,0.25), 0 0 30px rgba(232,57,74,0.20);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            color: #555;
+        .hero-tagline {
+            font-family: 'Permanent Marker', cursive;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-sub {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: var(--cyan);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn {
+            font-family: 'Anton', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 0.85rem 2.2rem;
+            border-radius: 4px;
+            transition: transform 0.15s, box-shadow 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn:hover { transform: translateY(-3px); }
+
+        .btn-red {
+            background: var(--red);
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(232,57,74,0.45);
+        }
+        .btn-red:hover { background: var(--red-dark); box-shadow: 0 6px 28px rgba(232,57,74,0.6); }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--cyan);
+            border: 2px solid var(--cyan);
+            box-shadow: 0 4px 20px rgba(77,207,232,0.2);
+        }
+        .btn-outline:hover { background: rgba(77,207,232,0.1); box-shadow: 0 6px 28px rgba(77,207,232,0.4); }
+
+        /* ── SECTION SHARED ── */
+        section { padding: 6rem 2rem; }
+
+        .section-label {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 0.95rem;
+            color: var(--cyan);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.4rem, 5vw, 3.5rem);
+            line-height: 1.05;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .accent-red  { color: var(--red); }
+        .accent-cyan { color: var(--cyan); }
+
+        .divider {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--red), var(--cyan));
+            border-radius: 2px;
             margin-bottom: 2rem;
         }
 
-        .cta-button {
-            display: inline-block;
-            background-color: #8B4513;
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
+        /* ── ABOUT ── */
+        .about {
+            background: var(--bg-darker);
+            position: relative;
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 0% 100%, rgba(232,57,74,0.06) 0%, transparent 50%);
+            pointer-events: none;
         }
 
-        .cta-button:hover {
-            background-color: #A0522D;
-        }
-
-        .features {
+        .about-inner {
+            max-width: 1100px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
-        .feature-card {
-            background-color: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
+        .about-photo {
+            position: relative;
         }
-
-        .feature-card h3 {
-            color: #8B4513;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+        .about-photo img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 8px 8px 0 var(--red), 16px 16px 0 var(--cyan);
+            display: block;
         }
-
-        .feature-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: rgba(0, 0, 0, 0.7);
+        .photo-badge {
+            position: absolute;
+            bottom: -18px;
+            right: -10px;
+            background: var(--red);
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
             color: white;
-            margin-top: 3rem;
+            transform: rotate(-3deg);
+            box-shadow: 3px 3px 0 var(--black);
+        }
+
+        .about-text p {
+            color: #a8b8c4;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 1.2rem;
+        }
+
+        /* ── PILLARS ── */
+        .pillars {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .pillars-header { margin-bottom: 3rem; }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .pillar-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            border-top: 4px solid var(--red);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .pillar-card:nth-child(even) { border-top-color: var(--cyan); }
+        .pillar-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+        }
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 80px; height: 80px;
+            background: radial-gradient(circle, rgba(232,57,74,0.08) 0%, transparent 70%);
+        }
+        .pillar-card:nth-child(even)::before {
+            background: radial-gradient(circle, rgba(77,207,232,0.08) 0%, transparent 70%);
+        }
+
+        .pillar-icon {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .pillar-card h3 {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+            color: var(--white);
+        }
+        .pillar-card p {
+            color: #7a90a0;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* ── JOIN CTA ── */
+        .join {
+            background: var(--bg-darker);
+            position: relative;
+            overflow: hidden;
+        }
+        .join::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 10% 30%, rgba(232,57,74,0.12) 0%, transparent 35%),
+                radial-gradient(circle at 90% 70%, rgba(77,207,232,0.12) 0%, transparent 35%);
+            pointer-events: none;
+        }
+        .join-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .join-inner p {
+            color: #a8b8c4;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        /* ── STATS BAR ── */
+        .stats {
+            background: linear-gradient(90deg, var(--red-dark), #9b2030 50%, var(--cyan-dark));
+            padding: 2.5rem 2rem;
+        }
+        .stats-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            text-align: center;
+        }
+        .stat-num {
+            font-family: 'Anton', sans-serif;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+            display: block;
+            color: var(--white);
+        }
+        .stat-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.75);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #111b23;
+            border-top: 2px solid var(--red);
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+        .footer-logo {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        .footer-logo span { color: var(--cyan); }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        .footer-links a {
+            color: #6a8090;
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--cyan); }
+        footer p {
+            color: #3d5060;
+            font-size: 0.85rem;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .nav-links { gap: 1.2rem; }
+            .about-inner {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .about-photo img {
+                box-shadow: 5px 5px 0 var(--red), 10px 10px 0 var(--cyan);
+            }
+        }
+        @media (max-width: 500px) {
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
+
+    <!-- NAV -->
     <nav>
-        <a href="index.html">Home</a>
-        <a href="about-us.html">About Us</a>
-        <a href="contact-us.html">Contact</a>
+        <div class="nav-logo">GenX<span>Besties</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#what-we-do">What We Do</a></li>
+            <li><a href="#join">Join Us</a></li>
+        </ul>
     </nav>
 
-    <div class="container">
-        <div class="hero">
-            <h1>GenX<span class="step">Besties</span></h1>
-            <p>Celebrating the Generation X Spirit</p>
-            <a href="https://www.youtube.com" target="_blank" class="cta-button">Subscribe on YouTube</a>
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <img src="GenXBestiesLogo.jpg" alt="GenX Besties Logo" class="hero-logo">
+        <p class="hero-tagline">Where Generation X comes to hang out.</p>
+        <p class="hero-sub">Nostalgia &nbsp;·&nbsp; Humor &nbsp;·&nbsp; Authenticity &nbsp;·&nbsp; Community</p>
+        <div class="btn-group">
+            <a href="https://www.youtube.com/@GenXBesties" target="_blank" class="btn btn-red">
+                ▶ &nbsp;Subscribe on YouTube
+            </a>
+            <a href="#about" class="btn btn-outline">Meet the Besties</a>
         </div>
+    </section>
 
-        <div class="features">
-            <div class="feature-card">
-                <h3>Entertainment</h3>
-                <p>Enjoy content that speaks to the GenX experience with humor, nostalgia, and fresh perspectives.</p>
+    <!-- STATS BAR -->
+    <div class="stats">
+        <div class="stats-inner">
+            <div class="stat-item">
+                <span class="stat-num">Gen X</span>
+                <span class="stat-label">Born 1965 – 1980</span>
             </div>
-            <div class="feature-card">
-                <h3>Community</h3>
-                <p>Connect with like-minded individuals who share your values, interests, and generation's unique outlook.</p>
+            <div class="stat-item">
+                <span class="stat-num">100%</span>
+                <span class="stat-label">Authentic</span>
             </div>
-            <div class="feature-card">
-                <h3>Authenticity</h3>
-                <p>Real conversations, real people, and real stories that matter to Generation X.</p>
+            <div class="stat-item">
+                <span class="stat-num">Zero</span>
+                <span class="stat-label">Filter Applied</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">∞</span>
+                <span class="stat-label">Good Vibes</span>
             </div>
         </div>
     </div>
 
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="about-inner">
+            <div class="about-photo">
+                <img src="20241231_AmyScott.jpg" alt="Amy and Scott - GenX Besties">
+                <span class="photo-badge">The Besties ✌</span>
+            </div>
+            <div class="about-text">
+                <p class="section-label">Who We Are</p>
+                <h2 class="section-title">We're <span class="accent-red">Amy</span> &amp; <span class="accent-cyan">Scott</span></h2>
+                <div class="divider"></div>
+                <p>Two Gen X best friends who grew up on MTV, mix tapes, and the smell of a Blockbuster on a Friday night. We started GenX Besties because we noticed nobody was keeping it real for our generation the way we wanted.</p>
+                <p>No filters, no fluff — just two besties talking about the things that matter to us: the music that defined us, the movies we still quote, the world we're navigating, and everything in between.</p>
+                <p>If you grew up skeptical, independent, and a little bit loud — you found your people.</p>
+                <a href="https://www.youtube.com/@GenXBesties" target="_blank" class="btn btn-red" style="margin-top:1rem;">
+                    ▶ &nbsp;Watch Our Channel
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PILLARS -->
+    <section id="what-we-do" style="background: var(--bg-dark);">
+        <div class="pillars">
+            <div class="pillars-header">
+                <p class="section-label">What We're About</p>
+                <h2 class="section-title">Real Talk for <span class="accent-cyan">Real People</span></h2>
+                <div class="divider" style="margin: 0 auto 1rem;"></div>
+            </div>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <span class="pillar-icon">📼</span>
+                    <h3>Nostalgia</h3>
+                    <p>80s, 90s, and early 2000s deep dives — the music, movies, TV shows, and pop culture moments that shaped who we are.</p>
+                </div>
+                <div class="pillar-card">
+                    <span class="pillar-icon">😂</span>
+                    <h3>Humor</h3>
+                    <p>We don't take ourselves too seriously. Expect laughs, real talk, and the kind of banter that only happens between true besties.</p>
+                </div>
+                <div class="pillar-card">
+                    <span class="pillar-icon">🎸</span>
+                    <h3>Culture</h3>
+                    <p>From grunge to hip-hop to alternative rock — we break down the music and culture that defined an entire generation.</p>
+                </div>
+                <div class="pillar-card">
+                    <span class="pillar-icon">🤝</span>
+                    <h3>Community</h3>
+                    <p>More than a channel — a tribe. Connect with fellow Gen Xers who get the references and share the same independent spirit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JOIN CTA -->
+    <section class="join" id="join">
+        <div class="join-inner">
+            <p class="section-label">Don't Miss Out</p>
+            <h2 class="section-title">Join the <span class="accent-red">Besties</span> Crew</h2>
+            <div class="divider" style="margin: 0 auto 1.5rem;"></div>
+            <p>New videos dropping regularly. Subscribe so you never miss a convo — and leave a comment to let us know you're out there. We actually read them.</p>
+            <div class="btn-group">
+                <a href="https://www.youtube.com/@GenXBesties" target="_blank" class="btn btn-red">
+                    ▶ &nbsp;Subscribe Free on YouTube
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 GenX Besties. All rights reserved.</p>
+        <div class="footer-logo">GenX<span>Besties</span></div>
+        <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#what-we-do">What We Do</a></li>
+            <li><a href="#join">Join Us</a></li>
+            <li><a href="https://www.youtube.com/@GenXBesties" target="_blank">YouTube</a></li>
+        </ul>
+        <p>&copy; 2026 GenX Besties &nbsp;·&nbsp; All rights reserved.</p>
     </footer>
+
 </body>
 </html>
